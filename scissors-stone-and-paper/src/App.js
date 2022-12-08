@@ -1,39 +1,26 @@
-import logo from "./logo.svg";
+import Register from "./Register/Register";
 import "./App.css";
 import { useState } from "react";
 import Games from "./Games/Games";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import MoreGames from "./MoreGames";
+import SspGames from "./Games/SspGames/SspGames";
 
 function App() {
   const [player, setPlayer] = useState("");
   console.log("player", player);
-  const navigate = useNavigate();
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Game Center for {player}</p>
-        <label>
-          Enter User Nickname:
-          <input
-            type="text"
-            placeholder="Enter Nickname ..."
-            onChange={(e) => setPlayer(e.target.value)}
-          />
-        </label>
-        <button
-          className="App-link"
-          onClick={() => {
-            navigate("/games");
-          }}
-        >
-          Let me in!
-        </button>
-      </header>
+      
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route
+          path="/"
+          element={<Register player={player} setPlayer={setPlayer} />}
+        />
         <Route path="/games" element={<Games player={player} />} />
+        <Route path="/more-games" element={<MoreGames/>} />
+        <Route path="/scissors-stone-paper" element={<SspGames player={player} />} />
       </Routes>
     </div>
   );

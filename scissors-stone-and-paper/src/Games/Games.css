@@ -8,11 +8,12 @@ li {
   margin: 10px;
   font-size: larger;
   cursor: pointer;
+  border-radius: 25px;
 }
 * {
   background-color: #282c34;
 }
-h1 {
+.h-tags {
   color: #61dafb;
 }
 ul {

@@ -7,7 +7,8 @@ export default function Games({ player }) {
 
   return (
     <div>
-      <h1>Select Game to Play, {player}!</h1>
+      <h1 className="h-tags">Welcome to Game Center!</h1>
+      <h2 className="h-tags">Select Game to Play, {player}!</h2>
       <ul>
         <Link to="/scissors-stone-paper" className="link-more-games">
           <li>Scissors, Stone and Paper</li>

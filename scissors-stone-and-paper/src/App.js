@@ -8,7 +8,6 @@ import SspGames from "./Games/SspGames/SspGames";
 
 function App() {
   const [player, setPlayer] = useState("");
-  console.log("player", player);
 
   return (
     <div className="App">

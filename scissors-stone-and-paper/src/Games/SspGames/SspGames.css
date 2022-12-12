@@ -1,3 +1,11 @@
-h1, h2, p, button{
-    color: #61dafb;
+h1,
+h2,
+p {
+  color: #61dafb;
+}
+button {
+  color: black;
+  border-radius: 25px;
+  background-color: #61dafb;
+  padding: 10px;
 }

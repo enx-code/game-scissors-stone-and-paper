@@ -8,12 +8,12 @@ export default function SspGames({ player }) {
   const [appChoice, setAppChoice] = useState("Rock");
   const [result, setResult] = useState(null);
 
-  const num = Math.floor(Math.random() * 9);
+  const num = Math.floor(Math.random() * 3);
   useEffect(() => {
     let result = "";
-    if (num >= 0 && num <= 2) {
+    if (num === 0) {
       result = "Scissors";
-    } else if (num >= 3 && num <= 5) {
+    } else if (num === 1) {
       result = "Rock";
     } else {
       result = "Paper";
@@ -21,27 +21,52 @@ export default function SspGames({ player }) {
     setAppChoice(result);
   }, [userSelection]);
 
-  console.log("Choices App", appChoice, "MyChoice", userSelection);
+  //   console.log("Choices App", appChoice, "MyChoice", userSelection);
 
-  const startGame = (appChoice, userSelection) => {
-    let result = "";
+  let outCome = "";
+  const startGame = () => {
     if (appChoice === userSelection) {
-      result = "Draw";
+      outCome = "Draw";
     }
     if (userSelection === "Rock") {
       if (appChoice === "Paper") {
-        result = "App, won!";
+        outCome = "App, won!";
+      } else {
+        outCome = "Congratulations, you Won!";
       }
     }
-    setResult(result);
+
+    if (userSelection === "Scissors") {
+      if (appChoice === "Rock") {
+        outCome = "App, won!";
+      } else {
+        outCome = "Congratulations, you Won!";
+      }
+    }
+
+    if (userSelection === "Paper") {
+      if (appChoice === "Scissors") {
+        outCome = "App, won!";
+      } else {
+        outCome = "Congratulations, you Won!";
+      }
+    }
+    console.log("Who Won!", outCome, userSelection, appChoice);
+    // setResult(outCome);
+    if (outCome === "Congratulations, you Won!") {
+        return setScore(score + 1)
+    }
   };
-  console.log("app won", result)
+  startGame();
   return (
     <div>
       <h1>Hello Player {player}!</h1>
       <h2>App Choice, {appChoice}.</h2>
-      <h2></h2>
-      <p>{score}</p>
+      <p>{outCome}</p>
+      <p>{score}-{appScore}</p>
+      <h2>
+        {player}'s choice {userSelection}!
+      </h2>
       <button
         onClick={() => {
           setMyselection("Scissors");
@@ -63,9 +88,6 @@ export default function SspGames({ player }) {
       >
         Paper
       </button>
-      <h2>
-        {player}'s choice {userSelection}!
-      </h2>
     </div>
   );
 }
